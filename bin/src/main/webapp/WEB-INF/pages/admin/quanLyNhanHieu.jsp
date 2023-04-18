@@ -14,27 +14,28 @@
 	<jsp:include page="template/sidebar.jsp"></jsp:include>
 
 	<div class="col-md-9 animated bounce">
-      <h3 class="page-header">Quản lý Nhãn hiệu</h3>
+		<h3 class="page-header">Quản lý Nhãn hiệu</h3>
 
-      <button class="btn btn-success btnThemNhanHieu">Thêm mới Nhãn hiệu</button>
-      
-            <hr/>
-            
-      <table class="table table-hover nhanHieuTable">
-        <thead>
-        <tr>
-          <th>Mã</th>
-          <th>Tên Hãng</th>
-          <th></th>
-         </tr>
+		<button class="btn btn-success btnThemNhanHieu">Thêm mới Nhãn
+			hiệu</button>
 
-        </thead>
-        <tbody>
-        </tbody>
+		<hr />
 
-      </table>
-    </div>
-    <div class="row col-md-6">
+		<table class="table table-hover nhanHieuTable">
+			<thead>
+				<tr>
+					<th>Mã</th>
+					<th>Tên Hãng</th>
+					<th></th>
+				</tr>
+
+			</thead>
+			<tbody>
+			</tbody>
+
+		</table>
+	</div>
+	<div class="row col-md-6">
 		<form class="nhanHieuForm" id="form">
 
 			<div>
@@ -44,7 +45,8 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Tạo mới/Cập nhật Nhãn hiệu</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Tạo mới/Cập
+									nhật Nhãn hiệu</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -57,14 +59,15 @@
 								</div>
 								<div class="form-group">
 									<label for="name">Tên hãng sản xuất:</label> <input type="text"
-										class="form-control" id="tenHangSanXuat" placeholder="Nhập vào tên hãng sản xuất" required />
+										class="form-control" id="tenHangSanXuat"
+										placeholder="Nhập vào tên hãng sản xuất" required />
 								</div>
-								
+
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Hủy</button>
 									<input class="btn btn-primary" id="btnSubmit" type="button"
-										value="Xác nhận"/>
+										value="Xác nhận" />
 								</div>
 							</div>
 						</div>
@@ -73,10 +76,10 @@
 			</div>
 		</form>
 	</div>
-  </div>
+	</div>
 
 
 	<jsp:include page="template/footer.jsp"></jsp:include>
-	<script src="<c:url value='/js/nhanHieuAjax.js'/>" ></script>
+	<script src="<c:url value='/js/nhanHieuAjax.js'/>"></script>
 </body>
 </html>

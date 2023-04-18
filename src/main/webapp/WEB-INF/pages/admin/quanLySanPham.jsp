@@ -20,7 +20,13 @@
 
 	<div class="col-md-9 animated bounce">
 		<h3 class="page-header">Quản lý Sản Phẩm</h3>
-
+		<div class="form-group form-inline"
+			style="float: right; margin-right: 10px; top: -103px;">
+			<input class="form-control" type="text" id="searchById"
+				placeholder="Nhập mã để tìm nhanh"> <span
+				class="glyphicon glyphicon-search" aria-hidden="true"
+				style="left: -30px; top: 4px;"></span>
+		</div>
 		<div class="form-group form-inline">
 			<label for="sel1">THÊM MỚI SẢN PHẨM (THEO DANH MỤC): </label> <select
 				id="danhMucDropdown" class="form-control">
@@ -29,6 +35,7 @@
 				</c:forEach>
 			</select>
 		</div>
+	
 		<hr>
 
 		<form class="form-inline" id="searchForm" name="searchObject">
@@ -68,19 +75,13 @@
 			</div>
 
 			&nbsp;&nbsp;
+			<div class="form-group form-inline">
 			<button type="button" class="btn btn-primary" id="btnDuyetSanPham">Duyệt
-				sản phẩm</button>
-		</form>
+				sản phẩm</button></div>
+		</form>	
+		<hr>
 
-		<div class="form-group form-inline"
-			style="float: right; margin-right: 10px; top: -33px; position: relative;"">
-			<input class="form-control" type="text" id="searchById"
-				placeholder="Nhập mã để tìm nhanh"> <span
-				class="glyphicon glyphicon-search" aria-hidden="true"
-				style="left: -30px; top: 4px;"></span>
-		</div>
-
-		<hr />
+		<hr>
 		<table class="table table-hover sanPhamTable "
 			style="text-align: center;">
 			<thead>
@@ -102,16 +103,16 @@
 		</ul>
 	</div>
 
-	<div class="row col-md-6">
-		<form id="lapTopForm" class="lapTopForm">
-			<div class="modal fade lapTopModal" tabindex="-1" role="dialog"
+	<div class="row col-md-6"> <!-- form thêm sản phẩm là DienThoai. Danh mục chính là DienThoai và các danh mục khác như ram, thiết bị các kiểu -->
+		<form id="DienThoaiForm" class="DienThoaiForm">
+			<div class="modal fade DienThoaiModal" tabindex="-1" role="dialog"
 				data-keyboard="false" data-backdrop="static">
 				<div class="modal-dialog modal-lg" role="document"
 					style="width: 60%;">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel">Thêm mới/ Cập
-								nhật Laptop</h5>
+								nhật Điện Thoại</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -121,11 +122,11 @@
 							<div class="row">
 								<div>
 									<input type="hidden" class="form-control" name="danhMucId"
-										id="idDanhMucLaptop">
+										id="idDanhMucDienThoai">
 								</div>
 								<div>
 									<input type="hidden" class="form-control" name="id"
-										id="idSanPhamLapTop" readonly>
+										id="idSanPhamDienThoai" readonly>
 								</div>
 								<div class="form-group col-md-7">
 									<label for="inputPassword4">Tên sản phẩm</label> <input
@@ -223,7 +224,7 @@
 	</div>
 
 
-	<div class="row col-md-6">
+	<div class="row col-md-6"> <!-- form thêm sản phẩm ngoài DienThoai -->
 		<form class="otherForm" id="otherForm">
 			<div class="modal fade otherModal" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-lg" role="document"

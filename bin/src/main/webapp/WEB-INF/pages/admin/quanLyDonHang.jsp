@@ -199,8 +199,8 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Hủy</button>
-									<input class="btn btn-primary" id="btnPhanCongSubmit" type="button"
-										value="Xác nhận" />
+									<input class="btn btn-primary" id="btnPhanCongSubmit"
+										type="button" value="Xác nhận" />
 								</div>
 							</div>
 						</div>

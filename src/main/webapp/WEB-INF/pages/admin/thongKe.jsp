@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Quản lý nhãn hiệu</title>
+<title>Quản lý Thống Kê</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script>
@@ -20,7 +20,7 @@
 			type : "GET",
 			data : data,
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/don-hang/report",
+			url : "http://localhost:8080/dienthoaishop/api/don-hang/report",
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
 					label.push(data[i][0] + "/" + data[i][1]);

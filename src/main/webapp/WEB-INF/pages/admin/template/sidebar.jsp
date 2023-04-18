@@ -55,6 +55,11 @@
               <span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
           </li>
           
+           <li class="side-bar main-menu">
+            <a href="<c:url value='/admin/thong-tin-khach-hang' />">
+              <span class="glyphicon glyphicon-signal">&nbsp;</span>Thông Tin Khách Hàng</a>
+          </li>
+          
           <li class="side-bar">
             <a href="<c:url value='/admin/profile' />">
               <span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>

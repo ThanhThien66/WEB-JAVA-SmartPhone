@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>LaptopShop-Đăng nhập</title>
+<title>dienthoaishop-Đăng nhập</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
@@ -30,8 +30,8 @@
 <body>
 	<!-- main -->
 
-	<c:set var="contextPath" value="${pageContext.request.contextPath}" />	
-	
+	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 	<div class="main-w3layouts wrapper">
 		<h1>ĐĂNG NHẬP</h1>
 		<div class="main-agileinfo">

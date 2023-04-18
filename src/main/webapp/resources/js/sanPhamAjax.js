@@ -11,11 +11,11 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/api/san-pham/all" + '?page=' + page,
+			url: "http://localhost:8080/dienthoaishop/api/san-pham/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, sanPham){
 					var sanPhamRow = '<tr>' +
-					                  '<td>' + '<img src="/laptopshop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
+					                  '<td>' + '<img src="/dienthoaishop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
 					                  '<td>' + sanPham.tenSanPham + '</td>' +
 					                  '<td>' + sanPham.danhMuc.tenDanhMuc + '</td>' +
 					                  '<td>' + sanPham.hangSanXuat.tenHangSanXuat + '</td>' +
@@ -24,8 +24,8 @@ $(document).ready(function() {
 					                  '<td width="0%">'+'<input type="hidden" id="sanPhamId" value=' + sanPham.id + '>'+ '</td>' + 
 					                  '<td> <button class="btn btn-warning btnChiTiet" style="margin-right: 6px">Chi tiết</button>' ;
 					
-					var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Laptop".toLowerCase());
-					sanPhamRow += ( checkTenDanhMuc != -1)?'<button class="btn btn-primary btnCapNhatLapTop" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
+					var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("".toLowerCase());
+					sanPhamRow += ( checkTenDanhMuc != -1)?'<button class="btn btn-primary btnCapNhatDienThoai" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
 					sanPhamRow += '  <button class="btn btn-danger btnXoaSanPham">Xóa</button></td>'+'</tr>';
 					$('.sanPhamTable tbody').append(sanPhamRow);
 				});
@@ -57,19 +57,18 @@ $(document).ready(function() {
 		var open = $(this).data("isopen");
 		if (open) {
 			var label = $('#danhMucDropdown option:selected').text();
-			if ((label.toLowerCase()).indexOf("Laptop".toLowerCase()) != -1) {
-				$('.lapTopModal').modal('show');
-				$("#idDanhMucLaptop").val($(this).val());
-				$('#lapTopForm').removeClass().addClass("addLapTopForm");
-				$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnSaveLapTopForm");
-			} else {
+			if ((label.toLowerCase()).indexOf("Khác".toLowerCase()) != -1) { //các danh mục ngoài DienThoai sẽ có bảng thêm san phẩm khác 
 				$('.otherModal').modal('show');
 				$("#idDanhMucKhac").val($(this).val());
 				$('#otherForm').removeClass().addClass("addOtherForm");
 				$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary btnSaveOtherForm");
-			}			
+			} else { //có 1 danh mục gom lai hết các sản phẩm DienThoai
+				$('.DienThoaiModal').modal('show');
+				$("#idDanhMucDienThoai").val($(this).val());
+				$('#DienThoaiForm').removeClass().addClass("addDienThoaiForm");
+				$('#DienThoaiForm #btnSubmit').removeClass().addClass("btn btn-primary btnSaveDienThoaiForm");
+			}
             $(".modal-title").text("Thêm mới sản phẩm danh mục "+ label);
-			
 		}
 		$(this).data("isopen", !open);
 	});
@@ -84,14 +83,14 @@ $(document).ready(function() {
     
     
 	// event khi ẩn modal form
-	$('.lapTopModal, .otherModal').on('hidden.bs.modal', function(e) {
+	$('.DienThoaiModal, .otherModal').on('hidden.bs.modal', function(e) {
 		e.preventDefault();
-		$("#idDanhMucLaptop, #idDanhMucKhac").val("");
-		$("#idSanPhamLapTop, #idSanPhamKhac").val("");
+		$("#idDanhMucDienThoai, #idDanhMucKhac").val("");
+		$("#idSanPhamDienThoai, #idSanPhamKhac").val("");
 			
-	    $('#lapTopForm').removeClass().addClass("lapTopForm");
-		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary");
-		$('#lapTopForm').trigger("reset");
+	    $('#DienThoaiForm').removeClass().addClass("DienThoaiForm");
+		$('#DienThoaiForm #btnSubmit').removeClass().addClass("btn btn-primary");
+		$('#DienThoaiForm').trigger("reset");
 		
 		$('#otherForm').removeClass().addClass("otherForm");
 		$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary");
@@ -99,16 +98,16 @@ $(document).ready(function() {
 		$('input, textarea').next().remove();
 	});
 	
-	// btn Save Form Laptop Event
-    $(document).on('click', '.btnSaveLapTopForm', function (event) {
+	// btn Save Form DienThoai Event
+    $(document).on('click', '.btnSaveDienThoaiForm', function (event) {
     	event.preventDefault();
-		ajaxPostLapTop();
+		ajaxPostDienThoai();
 		resetData();
     });
  
-    function ajaxPostLapTop() {
+    function ajaxPostDienThoai() {
     	// PREPATEE DATA
-    	 var form = $('.addLapTopForm')[0];   	 
+    	 var form = $('.addDienThoaiForm')[0];   	 
     	 var data = new FormData(form);
     	 
     	 // do post
@@ -116,7 +115,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+ 			url : "http://localhost:8080/dienthoaishop/api/san-pham/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -129,7 +128,7 @@ $(document).ready(function() {
  	        
  			success : function(response) {
  				if(response.status == "success"){
- 					$('.lapTopModal').modal('hide');
+ 					$('.DienThoaiModal').modal('hide');
  					alert("Thêm thành công");
  				} else {
  			    	$('input, textarea').next().remove();
@@ -165,7 +164,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+ 			url : "http://localhost:8080/dienthoaishop/api/san-pham/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -200,35 +199,35 @@ $(document).ready(function() {
     
     
     // click cập nhật button 
-    // vs danh mục laptop
-    $(document).on("click",".btnCapNhatLapTop", function(event){
+    // vs danh mục DienThoai
+    $(document).on("click",".btnCapNhatDienThoai", function(event){
 		event.preventDefault();
 		var sanPhamId = $(this).parent().prev().children().val();	
-		$('#lapTopForm').removeClass().addClass("updateLaptopForm");
-		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateLaptopForm");
+		$('#DienThoaiForm').removeClass().addClass("updateDienThoaiForm");
+		$('#DienThoaiForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateDienThoaiForm");
 	
-		var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/dienthoaishop/api/san-pham/"+sanPhamId;
 		$.get(href, function(sanPham) {
-			populate('.updateLaptopForm', sanPham);
-			$("#idDanhMucLaptop").val(sanPham.danhMuc.id);
+			populate('.updateDienThoaiForm', sanPham);
+			$("#idDanhMucDienThoai").val(sanPham.danhMuc.id);
 			var hangSXId = sanPham.hangSanXuat.id;
 			$("#nhaSXId").val(hangSXId);	
 		});
 		
 		removeElementsByClass("error");		
-		$('.updateLaptopForm .lapTopModal').modal();
+		$('.updateDienThoaiForm .DienThoaiModal').modal();
 	});
     
-	// btn update Laptop form Event
-    $(document).on('click', '.btnUpdateLaptopForm', function (event) {
+	// btn update DienThoai form Event
+    $(document).on('click', '.btnUpdateDienThoaiForm', function (event) {
     	event.preventDefault();
-		ajaxPutLapTop();
+		ajaxPutDienThoai();
 		resetData();
     });
  
-    function ajaxPutLapTop() {
+    function ajaxPutDienThoai() {
     	
-   	 var form = $('.updateLaptopForm')[0];   	 
+   	 var form = $('.updateDienThoaiForm')[0];   	 
 	 var data = new FormData(form);
 	 console.log(data);
 	 
@@ -237,7 +236,7 @@ $(document).ready(function() {
  		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+			url : "http://localhost:8080/dienthoaishop/api/san-pham/save",
 			enctype: 'multipart/form-data',
 			data : data,
 			
@@ -250,7 +249,7 @@ $(document).ready(function() {
 	        
 			success : function(response) {
 				if(response.status == "success"){
-					$('.lapTopModal').modal('hide');
+					$('.DienThoaiModal').modal('hide');
 					alert("Cập nhật thành công");
 				} else {
 			    	$('input, textarea').next().remove();
@@ -276,7 +275,7 @@ $(document).ready(function() {
 		$('#otherForm').removeClass().addClass("updateOtherForm");
 		$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateOtherForm");
 	
-		var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/dienthoaishop/api/san-pham/"+sanPhamId;
 		$.get(href, function(sanPham) {
 			populate('.updateOtherForm', sanPham);
 			$("#idDanhMucKhac").val(sanPham.danhMuc.id);
@@ -303,7 +302,7 @@ $(document).ready(function() {
       		async:false,
   			type : "POST",
   			contentType : "application/json",
-  			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+  			url : "http://localhost:8080/dienthoaishop/api/san-pham/save",
   			enctype: 'multipart/form-data',
   			data : data,
   			
@@ -348,7 +347,7 @@ $(document).ready(function() {
 		  $.ajax({
 			  async:false,
 			  type : "DELETE",
-			  url : "http://localhost:8080/laptopshop/api/san-pham/delete/" + sanPhamId,
+			  url : "http://localhost:8080/dienthoaishop/api/san-pham/delete/" + sanPhamId,
 			  success: function(resultMsg){
 				  resetDataForDelete();
 				  alert("Xóa thành công");
@@ -367,14 +366,14 @@ $(document).ready(function() {
     	var sanPhamId = $(this).parent().prev().children().val();	
     	console.log(sanPhamId);
     	
-    	var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+    	var href = "http://localhost:8080/dienthoaishop/api/san-pham/"+sanPhamId;
 		$.get(href, function(sanPham) {
-			$('.hinhAnh').attr("src", "/laptopshop/img/"+sanPham.id+".png");
+			$('.hinhAnh').attr("src", "/dienthoaishop/img/"+sanPham.id+".png");
 			$('.tenSanPham').html("<span style='font-weight: bold'>Tên sản phẩm: </span> "+ sanPham.tenSanPham);
 			$('.maSanPham').html("<span style='font-weight: bold'> Mã sản phẩm: </span>"+ sanPham.id);
 			$('.hangSangXuat').html("<span style='font-weight: bold'>Hãng sản xuất: </span>"+ sanPham.hangSanXuat.tenHangSanXuat);
 			
-			var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Laptop".toLowerCase());
+			var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("DienThoai".toLowerCase());
 			
 			console.log(checkTenDanhMuc != -1);
 			if(checkTenDanhMuc != -1){
@@ -438,10 +437,10 @@ $(document).ready(function() {
 		if(sanPhamId != ''){
     	  $('.sanPhamTable tbody tr').remove();
     	  $('.pagination li').remove();
-		  var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+		  var href = "http://localhost:8080/dienthoaishop/api/san-pham/"+sanPhamId;
 		  $.get(href, function(sanPham) {
 			  var sanPhamRow = '<tr>' +
-              '<td>' + '<img src="/laptopshop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
+              '<td>' + '<img src="/dienthoaishop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
               '<td>' + sanPham.tenSanPham + '</td>' +
               '<td>' + sanPham.danhMuc.tenDanhMuc + '</td>' +
               '<td>' + sanPham.hangSanXuat.tenHangSanXuat + '</td>' +
@@ -450,8 +449,8 @@ $(document).ready(function() {
               '<td width="0%">'+'<input type="hidden" id="sanPhamId" value=' + sanPham.id + '>'+ '</td>' + 
               '<td><button class="btn btn-warning btnChiTiet" style="margin-right: 6px">Chi tiết</button>'  ;
 
-              var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Laptop".toLowerCase());
-                  sanPhamRow += ( checkTenDanhMuc != -1)?'  <button class="btn btn-primary btnCapNhatLapTop" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
+              var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("".toLowerCase());
+                  sanPhamRow += ( checkTenDanhMuc != -1)?'  <button class="btn btn-primary btnCapNhatDienThoai" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatDienThoai" >Cập nhật</button>';
                   sanPhamRow += ' <button class="btn btn-danger btnXoaSanPham">Xóa</button></td>'+'</tr>';
                   $('.sanPhamTable tbody').append(sanPhamRow);
 		  });

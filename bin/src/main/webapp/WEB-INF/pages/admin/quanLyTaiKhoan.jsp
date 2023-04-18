@@ -66,7 +66,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-<!-- 								<div class="form-group">
+								<!-- 								<div class="form-group">
 									<input type="hidden" class="form-control" name="id" />
 								</div> -->
 								<div class="form-group">
@@ -78,17 +78,17 @@
 										type="password" class="form-control" name="password" required />
 								</div>
 								<div class="form-group">
-									<label for="name">Nhắc lại mật khẩu:</label> <input type="password"
-										class="form-control" name="confirmPassword" required />
+									<label for="name">Nhắc lại mật khẩu:</label> <input
+										type="password" class="form-control" name="confirmPassword"
+										required />
 								</div>
 
 								<div class="form-group">
 									<label for="name">Chọn vai trò:</label>
 									<c:forEach var="vaiTro" items="${listVaiTro}">
-										<label class="radio-inline"> 
-										<input type="radio"
-											name="tenVaiTro" value="${vaiTro.tenVaiTro}" checked="checked">
-											${vaiTro.tenVaiTro}
+										<label class="radio-inline"> <input type="radio"
+											name="tenVaiTro" value="${vaiTro.tenVaiTro}"
+											checked="checked"> ${vaiTro.tenVaiTro}
 										</label>
 									</c:forEach>
 								</div>

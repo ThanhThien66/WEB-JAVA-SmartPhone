@@ -15,8 +15,8 @@
 				</div>
 			  	<div class="col_1_of_4 span_1_of_4">
 					<h3>Địa điểm cửa hàng</h3>
-					<p> 1000 Giải Phóng-Hai Bà Trưng-Hà Nội</p>
-					<p> 1000 Giải Phóng-Hai Bà Trưng-Hà Nội</p>
+					<p> Gò Vấp - TP Hồ Chí Minh</p>
+					<p> Gò Vấp - TP Hồ Chí Minh</p>
 				</div> 
 				<div class="col_1_of_4 span_1_of_4 footer-lastgrid">
 					<h3>Follow Us:</h3>
@@ -32,7 +32,7 @@
 		<div class="clear"> </div>
 		<div class="wrap">
 		<div class="copy-right">
-			<p>&copy; 2018 Laptop Store. All Rights Reserved | Design by Group 14- HUST </p>
+			<p>&copy; 2023 Dien Thoai Store. All Rights Reserved | Design: Nguyen Thanh Thien - Ly Quoc Thanh </p>
 		</div>
 		</div>
 		</div>

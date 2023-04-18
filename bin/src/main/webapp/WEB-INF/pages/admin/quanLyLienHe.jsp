@@ -160,7 +160,7 @@ td, #noiDungLienHe, .noiDungLienHe, #noiDungTraLoi {
 					</div>
 				</div>
 			</div>
-			</form>
+		</form>
 	</div>
 	</form>
 	</div>

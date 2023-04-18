@@ -74,7 +74,8 @@
 				sản phẩm</button>
 		</form>
 		<hr />
-		<table class="table table-hover sanPhamTable " style="text-align: center;">
+		<table class="table table-hover sanPhamTable "
+			style="text-align: center;">
 			<thead>
 				<tr>
 					<th>Hình ảnh</th>

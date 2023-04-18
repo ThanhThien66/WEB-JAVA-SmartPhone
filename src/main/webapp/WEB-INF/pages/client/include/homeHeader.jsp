@@ -47,9 +47,8 @@
 		<!----start-Header---->
 		<div class="header">
 			<div class="search-bar">
-				<form action="/laptopshop/search">
-					<input type="text" name="name"><input type="submit"
-						value="Search" />
+				<form action="/dienthoaishop/search">
+					<input type="text" name="name"><input type="submit"	value="Search" />
 				</form>
 			</div>
 			<div class="clear"></div>
@@ -93,17 +92,17 @@
 			<!----start-logo---->
 			<div class="logo">
 				<a href="<%=request.getContextPath()%>/"><img
-					src="Frontend/img/logo3.png" title="logo" /></a>
+					src="Frontend/img/logo.jpg" title="logo" /></a>
 			</div>
 			<!----end-logo---->
 			<!----start-top-nav---->
 			<div class="top-nav">
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
-
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cửa hàng <span class="caret"></span></a>
 						<ul class="dropdown-menu" style="background: #94cb32" id="danhmuc2">
-						</ul></li>
+						</ul>
+					</li>
 					<li><a href="<%=request.getContextPath()%>/shipping">Miễn
 							phí vận chuyển</a></li>
 					<li><a href="<%=request.getContextPath()%>/guarantee">Bảo

@@ -6,9 +6,9 @@
 					<div class="image-slider">
 						<!-- Slideshow 1 -->
 					    <ul class="rslides" id="slider1">
-					      <li><img src="Frontend/img/laptop1.jpg" alt=""></li>
-					      <li><img src="Frontend/img/laptop2.png" alt=""></li>
-					      <li><img src="Frontend/img/laptop3.png" alt=""></li>
+					      <li><img src="Frontend/img/dienthoai1.jpg" alt=""></li>
+					      <li><img src="Frontend/img/dienthoai2.jpg" alt=""></li>
+					      <li><img src="Frontend/img/dienthoai3.jpg" alt=""></li>
 					    </ul>
 						 <!-- Slideshow 2 -->
 					</div>
@@ -20,22 +20,22 @@
 		    	<div class="top-3-grids">
 		    		<div class="section group">
 				<div class="grid_1_of_3 images_1_of_3">
-					  <a href="single.html"><img src="Frontend/img/acer.jpg"></a>
-					  <h3>Thương hiệu nổi bật </h3>
+					  <a href="store?brand=APPLE"><img src="Frontend/img/applelogo.png"><h3>Thương hiệu nổi bật </h3></a>
+					  
 				</div>
 				<div class="grid_1_of_3 images_1_of_3 ">
-					   <a href="single.html"><img src="Frontend/img/lenovo2.png" style="background-color: white"></a>
-					  <h3 >Thương hiệu nổi bật</h3>
+					   <a href="store?brand=SAMSUNG"><img src="Frontend/img/samsung.png" style="background-color: white">  <h3>Thương hiệu nổi bật</h3></a>
+					
 				</div>
 				<div class="grid_1_of_3 images_1_of_3 ">
-					   <a href="single.html"><img src="Frontend/img/dell.png" style="background-color: white"></a>
-					  <h3>Thương hiệu nổi bật</h3>
+					   <a href="store?brand=OPPO"><img src="Frontend/img/oppo.png" style="background-color: white">  <h3>Thương hiệu nổi bật</h3></a>
+					
 				</div>
 			</div>
 		    	</div>
 		    	
-		    <div class="content-grids">
-		    	<h4>DANH SÁCH LAPTOP MỚI NHẤT</h4>
+		    <div class="content-grids"><!--storeContent.jps-->
+		    	<h4>DANH SÁCH CÁC SẢN PHẨM MỚI NHẤT</h4>
 		    
 			</div>
 			
