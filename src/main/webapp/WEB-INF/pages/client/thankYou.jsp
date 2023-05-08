@@ -106,7 +106,7 @@
 
 
 
-				<p>dienthoaishop xin chân thành cảm ơn quý khách hàng đã tin tưởng
+				<p>Điện Thoại Shop xin chân thành cảm ơn quý khách hàng đã tin tưởng
 					sử dụng dịch vụ, sản phẩm của chúng tôi</p>
 				<br> <a href="<%=request.getContextPath()%>/">Nhấn vào đây
 					để tiếp tục mua sắm</a>

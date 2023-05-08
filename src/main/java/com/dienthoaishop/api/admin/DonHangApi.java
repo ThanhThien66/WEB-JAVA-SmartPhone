@@ -81,7 +81,11 @@ public class DonHangApi {
 			sp.setDonViBan(sp.getDonViBan() + ct.getSoLuongNhanHang());
 			sp.setDonViKho(sp.getDonViKho() - ct.getSoLuongNhanHang());
 		}
-		dh.setTrangThaiDonHang("Hoàn thành");
+		if(ghiChuAdmin.equals("Đã huỷ")) {
+			dh.setTrangThaiDonHang("Đã bị hủy");
+		}else {
+			dh.setTrangThaiDonHang("Hoàn thành");
+		}
 		String ghiChu = dh.getGhiChu();
 		if (!ghiChuAdmin.equals("")) {
 			ghiChu += "<br> Ghi chú admin:\n" + ghiChuAdmin;

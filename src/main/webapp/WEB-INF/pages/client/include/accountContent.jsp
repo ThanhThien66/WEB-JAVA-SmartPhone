@@ -72,7 +72,7 @@
 							<td><c:forEach var="chiTiet"
 									items="${donHang.danhSachChiTiet}">
 									<p>
-										<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'>${chiTiet.sanPham.tenSanPham}</a><br>
+										<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'><img src="/dienthoaishop/img/${chiTiet.sanPham.id}.png" alt="not found img" class="img-reponsive fix-size-img"></p>${chiTiet.sanPham.tenSanPham}</a><br>
 									</p>
 
 									<c:choose>

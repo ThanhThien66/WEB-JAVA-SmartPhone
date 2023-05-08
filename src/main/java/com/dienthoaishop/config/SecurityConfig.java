@@ -42,11 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().antMatchers("/register").permitAll().antMatchers("/").permitAll()
-				.antMatchers("/admin").hasRole("ADMIN").antMatchers("/shipper").hasRole("SHIPPER").and().formLogin()
+				.antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/shipper/**").hasRole("SHIPPER").and().formLogin()
 				.loginPage("/login").usernameParameter("email").passwordParameter("password")
 				.successHandler(successHandler).failureUrl("/login?error").and().logout().logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout").and().rememberMe().key("uniqueAndSecret")
 				.rememberMeParameter("remember-me").and().exceptionHandling().accessDeniedPage("/login?accessDenied");
 	}
+	
 
 }

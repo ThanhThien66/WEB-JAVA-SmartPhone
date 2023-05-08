@@ -30,7 +30,7 @@
 		</div>
 	</form>
 		<hr />
-		<table class="table table-hover customerTable"
+		<table class="table table-bordered table-hover customerTable table-dark table-striped"
 			style="text-align: center">
 			<thead>
 				<tr>
@@ -38,7 +38,6 @@
 					<th>Địa Chỉ</th>
 					<th>Số Điện Thoại</th>
 					<th>Tổng Tiền Hàng Đã Đặt</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
